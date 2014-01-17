@@ -12,8 +12,8 @@ import org.terrier.utility.ApplicationSetup;
  * 
  * --- TRAINING PHASE ---
  * Classificator: SVM, Naive Bayes
- * SVM -> full cycle exp
- * NB -> full cycle exp
+ * SVM -> full cycle experiments
+ * NB -> full cycle experiments
  * Generate 3 models
  * 		Opinion (Pos+Neg+Mix), Positive, Negative
  * 
@@ -21,7 +21,8 @@ import org.terrier.utility.ApplicationSetup;
  * For each classificator
  * 		For each model
  * 			For each test set -> classificate!
- * Check metrics: Accuracy, Precision, Recall, ecc...
+ * 
+ * Check metrics: Accuracy, Precision, Recall
  * 
  */
 
