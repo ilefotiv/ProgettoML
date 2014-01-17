@@ -1,0 +1,36 @@
+I file .qrel presentati corrispondono alle valutazioni effettuate sui tweet in termini di relevance,reputation,opinion e mood.
+
+Ogni riga all'interno dei file .qrel corrisponde a un tweet valutato e si compone di 4 valori:
+- un codice identificativo relativo al topic selezionato(primo valore);
+- un valore 'dummy', presente per motivi storici, ma non più utilizzato(secondo valore);
+- un codice identificativo del tweet valutato(terzo valore);
+- un valore intero relativo alla valutazione del tweet(quarto valore).
+
+Per quanto riguarda l'intero relativo alla valutazione del tweet, di seguito viene presentata la legenda dei valori che possono essere incontrati:
+
+- relevance.qrel:
+	2---> molto pertinente
+	1---> pertinente
+	0---> non pertinente
+
+- reputation.qrel:
+	3---> positivo
+	2---> neutro
+	1---> negativo
+	0---> non so
+	-1---> non valutato (tweet non pertinente)
+
+- opinion.qrel:
+	4---> positivo
+	3---> neutro
+	2---> negativo
+	1---> misto
+	0---> non so
+	-1---> non valutato (tweet non pertinente)
+
+- mood.qrel:
+	3---> positivo
+	2---> neutro
+	1---> negativo
+	0---> non so
+	-1---> non valutato (tweet non pertinente)
