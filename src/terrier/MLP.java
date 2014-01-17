@@ -8,18 +8,19 @@ public class MLP {
 	
 	private void setProperties(){
 		
-		if(System.getProperty("user.home").equals("/Users/Federico")){
-			System.setProperty("terrier.home", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/");
-			System.setProperty("terrier.etc", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/etc");
-			System.setProperty("terrier.share", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/share");
-			System.setProperty("terrier.var", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/var");
-			System.setProperty("terrier.index.path", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/var/index");
-		}else{
-			System.setProperty("terrier.home", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/");
-			System.setProperty("terrier.etc", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/etc");
-			System.setProperty("terrier.share", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/share");
-			System.setProperty("terrier.var", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/var");
-			System.setProperty("terrier.index.path", "/Users/Federico/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/var/index");
+		if(System.getProperty("user.home").equals("/Users/Federico")) {
+			System.setProperty("terrier.home", System.getProperty("user.home")+"/Documents/MyDocuments/Universita/ML/Progetto/terrier-3.5.1/");
+			System.setProperty("terrier.etc", System.getProperty("terrier.home")+"/etc");
+			System.setProperty("terrier.share", System.getProperty("terrier.home")+"/share");
+			System.setProperty("terrier.var", System.getProperty("terrier.home")+"/var");
+			System.setProperty("terrier.index.path", System.getProperty("terrier.home")+"/var/index");
+		}
+		if(System.getProperty("user.home").equals("/Users/apple_develop")) {
+			System.setProperty("terrier.home", System.getProperty("user.home")+"/Desktop/ProgettoML/terrier-ML-torvergata/terrier-3.5.1/");
+			System.setProperty("terrier.etc", System.getProperty("terrier.home")+"/etc");
+			System.setProperty("terrier.share", System.getProperty("terrier.home")+"/share");
+			System.setProperty("terrier.var", System.getProperty("terrier.home")+"/var");
+			System.setProperty("terrier.index.path", System.getProperty("terrier.home")+"/var/index");
 		}
 	}
 
