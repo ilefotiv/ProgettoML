@@ -1,5 +1,4 @@
-import org.terrier.structures.Index;
-import org.terrier.utility.ApplicationSetup;
+package terrier;
 
 /**
  * 
@@ -26,8 +25,10 @@ import org.terrier.utility.ApplicationSetup;
  * 
  */
 
-public class main {
-
-	Index index = Index.createIndex(ApplicationSetup.TERRIER_INDEX_PATH,ApplicationSetup.TERRIER_INDEX_PREFIX);
+public class Main {
+	
+	public static void main(String[] args){
+		new MLP();
+	}
 
 }
