@@ -3,7 +3,7 @@ import org.terrier.utility.ApplicationSetup;
 
 /**
  * 
- * @author apple_develop
+ * @author Feliciano Colella, Federico Scaccia
  * 
  * Get QRELs
  * Get Lexicon from DirInd
