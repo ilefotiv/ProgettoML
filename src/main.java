@@ -4,6 +4,7 @@ import org.terrier.utility.ApplicationSetup;
 /**
  * 
  * @author Feliciano Colella, Federico Scaccia
+ * @date 17/01/2014
  * 
  * Get QRELs
  * Get Lexicon from DirInd
