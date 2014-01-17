@@ -5,6 +5,7 @@ import org.terrier.utility.ApplicationSetup;
  * 
  * @author Feliciano Colella, Federico Scaccia
  * @date 17/01/2014
+ * @organization Università degli Studi di Roma Tor Vergata
  * 
  * Get QRELs
  * Get Lexicon from DirInd
