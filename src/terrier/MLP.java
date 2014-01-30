@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.terrier.matching.ResultSet;
 import org.terrier.structures.DirectIndex;
+import org.terrier.structures.DocumentIndex;
 import org.terrier.structures.Index;
 import org.terrier.structures.Lexicon;
 import org.terrier.structures.LexiconEntry;
@@ -24,14 +24,14 @@ import org.terrier.utility.ApplicationSetup;
 
 public class MLP {
 	
-	protected Map<String,String> categorizeTweets;
+	protected Map<String,Integer> categorizeTweets;
 	protected Index index;
 	protected HashMap<ArrayList<String>,Integer> testSet;
 	protected HashMap<ArrayList<String>,Integer> trainingSet;
 	protected List<Tweet> tweets;
 	
 	public MLP(){
-		categorizeTweets = new HashMap<String,String>();
+		categorizeTweets = new HashMap<String,Integer>();
 		testSet = new HashMap<>();
 		trainingSet = new HashMap<>();
 		tweets = new ArrayList<>();
@@ -46,10 +46,40 @@ public class MLP {
 	}
 	
 	private void createInputSet() {
-		DirectIndex di = index.getDirectIndex(); //Prendo l'Indice Diretto
+		DirectIndex diri = index.getDirectIndex(); //Prendo l'Indice Diretto
 		Lexicon<String> lex = index.getLexicon(); //Prendo il Lexicon
 		MetaIndex metaIndex = index.getMetaIndex(); //Prendo le meta informazioni
-
+		DocumentIndex doci = index.getDocumentIndex(); //Prendo il Document Index
+		
+		Iterator<String> iterator = categorizeTweets.keySet().iterator(); 
+		
+		float n = 5587;
+		float k = 1;
+		try {
+			while (iterator.hasNext()) { 
+				String key = iterator.next().toString(); 
+				int docid = metaIndex.getDocument("docno",key);
+				int[][] postings = diri.getTerms(docid);
+				
+				ArrayList<String> tweet = new ArrayList<>();
+				
+				for(int i=0;i<postings[0].length; i++){
+					Entry<String, LexiconEntry> le = lex.getLexiconEntry(postings[0][i]);
+					String s = le.getKey(); //Parola
+					tweet.add(s);
+					//System.out.println(s+" "+postings[0][i]+" "+postings[1][i]);
+				}
+				
+				trainingSet.put(tweet, categorizeTweets.get(key));
+				//System.out.println(((k++/n)*100)+"%");
+			}
+			
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		/*
 		ArrayList<Parola> paroleSingleTweet = new ArrayList<Parola>();
 
 		Iterator<String> iterator = categorizeTweets.keySet().iterator(); 
@@ -59,7 +89,7 @@ public class MLP {
 				String key = iterator.next().toString();  
 				int[][] postings;
 
-				postings = di.getTerms(Integer.parseInt(key)); //Prendo i posting
+				postings = diri.getTerms(doci.getDocumentEntry(Integer.()); //Prendo i posting
 
 				for(int i=0;i<postings[0].length; i++){
 					Entry<String, LexiconEntry> le = lex.getLexiconEntry(postings[0][i]);
@@ -79,6 +109,7 @@ public class MLP {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 
 	/**
@@ -104,7 +135,7 @@ public class MLP {
 			while((lineOp = readerOp.readLine()) != null){ //Scorro riga x riga
 				String[] op = lineOp.split(" "); //Separo gli elementi di una riga tramite lo spazio
 				
-				categorizeTweets.put(op[2], op[3]); //Altrimenti usa la sua categoria
+				categorizeTweets.put(op[2], Integer.parseInt(op[3]));
 					
 			}
 		} catch (IOException e) {
