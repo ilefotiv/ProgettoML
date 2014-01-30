@@ -67,7 +67,6 @@ public class MLP {
 					Entry<String, LexiconEntry> le = lex.getLexiconEntry(postings[0][i]);
 					String s = le.getKey(); //Parola
 					tweet.add(s);
-					//System.out.println(s+" "+postings[0][i]+" "+postings[1][i]);
 				}
 				
 				trainingSet.put(tweet, categorizeTweets.get(key));
@@ -79,37 +78,6 @@ public class MLP {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*
-		ArrayList<Parola> paroleSingleTweet = new ArrayList<Parola>();
-
-		Iterator<String> iterator = categorizeTweets.keySet().iterator(); 
-
-		try {
-			while (iterator.hasNext()) {  //Per ogni documento del training set
-				String key = iterator.next().toString();  
-				int[][] postings;
-
-				postings = diri.getTerms(doci.getDocumentEntry(Integer.()); //Prendo i posting
-
-				for(int i=0;i<postings[0].length; i++){
-					Entry<String, LexiconEntry> le = lex.getLexiconEntry(postings[0][i]);
-					String s = le.getKey(); //Parola
-					paroleSingleTweet.add(new Parola(s,postings[1][i])); //Parola + TF
-				}
-
-				//Creo un nuovo elemento di tipo Tweet che contiene tutte le informazioni di un Tweet
-				//tweets.add(new Tweet(metaIndex.getItem("id", categorizeTweets.get(j)),docids[j],scores[j],paroleSingleTweet,categorizeTweets.get(metaIndex.getItem("id", docids[j]))));
-				for(Parola p : paroleSingleTweet){
-					System.out.println(p.toString());
-				}
-				paroleSingleTweet.clear(); //Pulisco l'ArrayList
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 
 	/**
