@@ -53,8 +53,6 @@ public class MLP {
 		
 		Iterator<String> iterator = categorizeTweets.keySet().iterator(); 
 		
-		float n = 5587;
-		float k = 1;
 		try {
 			while (iterator.hasNext()) { 
 				String key = iterator.next().toString(); 
@@ -68,11 +66,9 @@ public class MLP {
 					String s = le.getKey(); //Parola
 					tweet.add(s);
 				}
-				
 				trainingSet.put(tweet, categorizeTweets.get(key));
 				//System.out.println(((k++/n)*100)+"%");
 			}
-			
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -102,10 +98,9 @@ public class MLP {
 			String lineOp;
 			while((lineOp = readerOp.readLine()) != null){ //Scorro riga x riga
 				String[] op = lineOp.split(" "); //Separo gli elementi di una riga tramite lo spazio
-				
 				categorizeTweets.put(op[2], Integer.parseInt(op[3]));
-					
 			}
+			readerOp.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -128,16 +123,13 @@ public class MLP {
 		try {
 			discoFileStream = new FileOutputStream(file);
 			disco = new PrintStream(discoFileStream);
-			
 			BufferedReader readerOp = new BufferedReader(new FileReader(fileQREL)); //Carico il file
-			
 			String lineOp;
 			while((lineOp = readerOp.readLine()) != null){ //Scorro riga x riga
 				String[] op = lineOp.split(" "); //Separo gli elementi di una riga tramite lo spazio
-				
 				disco.println(op[2]+";"+op[3]); //Altrimenti usa la sua categoria
-					
 			}
+			readerOp.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
