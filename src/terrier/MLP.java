@@ -38,7 +38,18 @@ public class MLP {
 		trainingSet = new HashMap<>();
 		tweets = new ArrayList<>();
 		
-		System.out.println(System.getProperty("java.library.path"));
+		setProperties(); //Setto i path di terrier
+		getCategorizeTweets("./twitter/benchmark-SA/benchmark-opinion/training-1.qrel"); //Prendo le categorie dei tweet
+		//createFile("./twitter/opinion.qrel");
+		
+		loadIndex(); //Carico l'index
+		
+		createInputSet();
+		
+		startREngine(args);
+	}
+	
+	private void startREngine(String[] args) {
 		if (!Rengine.versionCheck()) {
 		    System.err.println("** Version mismatch - Java files don't match library version.");
 		    System.exit(1);
@@ -54,16 +65,9 @@ public class MLP {
 	        if (!re.waitForR()) {
 	            System.out.println("Cannot load R");
 	            return;
-	        }
-		setProperties(); //Setto i path di terrier
-		getCategorizeTweets("./twitter/benchmark-SA/benchmark-opinion/training-1.qrel"); //Prendo le categorie dei tweet
-		//createFile("./twitter/opinion.qrel");
-		
-		loadIndex(); //Carico l'index
-		
-		createInputSet();
+        }
 	}
-	
+
 	private void createInputSet() {
 		DirectIndex diri = index.getDirectIndex(); //Prendo l'Indice Diretto
 		Lexicon<String> lex = index.getLexicon(); //Prendo il Lexicon
