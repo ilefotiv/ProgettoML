@@ -35,7 +35,7 @@ public class TextConsole implements RMainLoopCallbacks
     }
 	
     public String rChooseFile(Rengine re, int newFile) {
-	FileDialog fd = new FileDialog(new Frame(), (newFile==0)?"Select a file":"Select a new file", (newFile==0)?FileDialog.LOAD:FileDialog.SAVE);
+	FileDialog fd = new FileDialog(new Frame(), (newFile==0)?"select a file":"Select a new file", (newFile==0)?FileDialog.LOAD:FileDialog.SAVE);
 	fd.show();
 	String res=null;
 	if (fd.getDirectory()!=null) res=fd.getDirectory();
