@@ -4,7 +4,7 @@ package terrier;
  * 
  * @author Feliciano Colella, Federico Scaccia
  * @date 17/01/2014
- * @organization Universit� degli Studi di Roma Tor Vergata
+ * @organization Universit�� degli Studi di Roma Tor Vergata
  * 
  * Get QRELs
  * Get Lexicon from DirInd
@@ -26,9 +26,7 @@ package terrier;
  */
 
 public class Main {
-	
 	public static void main(String[] args){
 		new MLP(args);
 	}
-
 }
